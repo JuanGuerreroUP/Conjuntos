@@ -28,10 +28,9 @@ def func_diff(A,B): #-
                 A.remove(a)
     return A
 def func_sim(A,B): #+
-    A = ListToSet(A)
-    B = ListToSet(B)
-    
-    return setToList(A.symmetric_difference(B))
+    salida = func_union(A,B)
+    inter = func_inter(A,B)
+    return func_diff(salida,inter)
 
 def func_cart(A,B): #x
     salida = []
