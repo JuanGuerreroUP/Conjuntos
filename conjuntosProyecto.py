@@ -1,6 +1,7 @@
+#%%
 import conjuntos
 import textHandler
-
+#%%
 nConjuntos = 0
 universo = {}
 while True:
@@ -16,6 +17,13 @@ operadoresNom = ['unión', 'intersección','producto cartesiano', 'diferencia', 
 print ("Simbología")
 for i in range(len(operadoresNom)):
     print(textHandler.operadores[i],": ",operadoresNom[i])
+
+
+
+
+
+#%%
+print(universo)
 while True:
     #operadores = ['u', '^', 'x', '-', '+', 'p']
     print ("Ingresa una operación con conjutos: ")
@@ -29,3 +37,5 @@ while True:
         print(head.valor)
     except:
         print("Sintaxis incorrecta en la operación: ",operacion)
+
+# %%

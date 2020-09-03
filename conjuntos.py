@@ -13,7 +13,8 @@ def ListToSet(A):
 def func_union(A, B): #u
     A = ListToSet(A)
     B = ListToSet(B)
-    return setToList(A.update(B))
+    A.update(B)
+    return setToList(A)
 def func_inter(A, B): #^
     salida = []
     for a in A:
@@ -22,11 +23,12 @@ def func_inter(A, B): #^
                 salida.append(b)
     return salida
 def func_diff(A,B): #-
+    aux = A[:]
     for a in A:
         for b in B:
             if b == a:
-                A.remove(a)
-    return A
+                aux.remove(a)
+    return aux
 def func_sim(A,B): #+
     salida = func_union(A,B)
     inter = func_inter(A,B)
