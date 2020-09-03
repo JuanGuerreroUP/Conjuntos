@@ -13,18 +13,24 @@ def ListToSet(A):
 def func_union(A, B): #u
     A = ListToSet(A)
     B = ListToSet(B)
-    return setToList(A.union(B))
+    return setToList(A.update(B))
 def func_inter(A, B): #^
-    A = ListToSet(A)
-    B = ListToSet(B)
-    return setToList(A.intersection(B))
+    salida = []
+    for a in A:
+        for b in B:
+            if b == a:
+                salida.append(b)
+    return salida
 def func_diff(A,B): #-
-    A = ListToSet(A)
-    B = ListToSet(B)
-    return setToList(A.difference(B))
+    for a in A:
+        for b in B:
+            if b == a:
+                A.remove(a)
+    return A
 def func_sim(A,B): #+
     A = ListToSet(A)
     B = ListToSet(B)
+    
     return setToList(A.symmetric_difference(B))
 
 def func_cart(A,B): #x

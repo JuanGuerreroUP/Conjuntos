@@ -1,15 +1,6 @@
-#%%
 import conjuntos
 import textHandler
-#%%
-#tests
-A = [1,2]
-B = ['a','b']
-B = conjuntos.func_potencia(B)
-conjuntos.func_cart(A,B)
 
-#%%
-#User
 nConjuntos = 0
 universo = {}
 while True:
@@ -38,5 +29,3 @@ while True:
         print(head.valor)
     except:
         print("Sintaxis incorrecta en la operación: ",operacion)
-
-# %%

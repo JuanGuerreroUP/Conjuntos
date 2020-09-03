@@ -42,8 +42,10 @@ def operacion(A,B,operador, universo):
         return conjuntos.func_sim(A,B)
     if operador == 'p':
         return conjuntos.func_potencia(A)
+#%%
+#quitar
 COUNT = [5]  
-def print2DUtil(root, space) : 
+def print2DUtil(root, space) :  
     if (root == None) : 
         return
     space += COUNT[0] 
@@ -55,8 +57,7 @@ def print2DUtil(root, space) :
     print2DUtil(root.left, space)  
 def print2D(root) : 
     print2DUtil(root, 0)  
-
-#(( ))
+#%%
 def parentesisChunk(entrada, inicio = 0):
     cuenta = 0
     fin = 0
@@ -75,43 +76,36 @@ def parentesisChunk(entrada, inicio = 0):
     return fin + 1
 
 operadores = ['u', '^', 'x', '-', '+', 'p']
-#entrada = "p((AuB)-(B^A))"
 def makeTree(entrada):
     tam = len(entrada)
     i = 0
     head = Arbol()
     trueHead = head
-    while i < tam:
-        #A+B+C
-        if entrada[i] in operadores[:] :
-            if(head.valor != None):
-                # +
-                #A B
-                head.left = Arbol(head.valor)
-            head.valor = entrada[i]
-            if(head.valor == operadores[-1]):
-                head.right = Arbol(0)
-            i += 1
-        else:
-            branch = Arbol()
-            if entrada[i] == '(':
-                temp = i
-                i = parentesisChunk(entrada, i) -1
-                branch = makeTree(entrada[temp+1:i-1])
-            else:
-                branch.valor = entrada[i]
+    if(tam == 1):
+        head.valor = entrada[i]
+    else:
+        while i < tam:
+            #A+B+C
+            if entrada[i] in operadores[:] :
+                if(head.valor != None):
+                    head.left = Arbol(head.valor)
+                head.valor = entrada[i]
+                if(head.valor == operadores[-1]):
+                    head.right = Arbol(0)
                 i += 1
-            if head.left == None:
-                head.left = branch
             else:
-                head.right = branch
-                head = head.right
+                branch = Arbol()
+                if entrada[i] == '(':
+                    temp = i
+                    i = parentesisChunk(entrada, i) -1
+                    branch = makeTree(entrada[temp+1:i-1])
+                else:
+                    branch.valor = entrada[i]
+                    i += 1
+                if head.left == None:
+                    head.left = branch
+                else:
+                    head.right = branch
+                    head = head.right
     return trueHead
-entrada = "p(A)"
-#entrada = '1+2+3+4+5'
-head = makeTree(entrada)
-print2D(head)
-universo = {"A" : [1,2,3,4], "B" : [2,4,6,8] }
-head.doMath(universo)
-print(head.valor)
 
